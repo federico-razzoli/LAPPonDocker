@@ -33,6 +33,9 @@ wget https://raw.githubusercontent.com/federico-razzoli/php-pdo-pgsql/master/Doc
 
 docker-compose up -d
 
+DB_NAME=$DB_NAME DB_USER=$DB_USER DB_PASSWORD=$DB_PASSWORD \
+        $HERE/generate-pgpass.sh
+
 # Create a PHP file that defines a PG_CONNECTIONSTRING constant
 # containing a usable connectionstring.
 mkdir -p $AP_PATH/conf
