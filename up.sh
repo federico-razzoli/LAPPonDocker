@@ -3,6 +3,13 @@
 # attempt to make the script collable from anywhere,
 # but then Docker Compose will not work...
 HERE=$( cd $(dirname "$0") ; pwd -P )
+if [ ! -f $HERE/.env ]; then
+        echo "ERROR: .env file not found in $HERE"
+        echo 'Before continuing, create it from .env.default and edit it:'
+        echo '  cp .env.default .env'
+        echo '  vi .env'
+        exit 1
+fi
 source $HERE/.env
 
 if [ "$FORCE" = '1' ];

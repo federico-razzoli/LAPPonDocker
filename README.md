@@ -25,6 +25,14 @@ To contact the maintainer, see the **Maintainer** section below.
 
 ## Setup
 
+Create `.env` file from `.env.default`:
+
+```
+cp .env.default .env
+```
+
+Edit `.env`, especially the PostgreSQL credentials you want to create.
+
 To create the containers, run:
 
 ```
