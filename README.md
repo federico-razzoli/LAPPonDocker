@@ -32,6 +32,8 @@ cp .env.default .env
 ```
 
 Edit `.env`, especially the PostgreSQL credentials you want to create.
+Be sure to change the line which sets `$CUSTOM_CONFIG`, to confirm that the configuration
+has been edited. Otherwise `up.sh` will refuse to create the containers.
 
 To create the containers, run:
 

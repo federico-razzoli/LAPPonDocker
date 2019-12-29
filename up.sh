@@ -3,7 +3,8 @@
 # attempt to make the script collable from anywhere,
 # but then Docker Compose will not work...
 HERE=$( cd $(dirname "$0") ; pwd -P )
-if [ ! -f $HERE/.env ]; then
+if [ ! -f $HERE/.env ];
+then
         echo "ERROR: .env file not found in $HERE"
         echo 'Before continuing, create it from .env.default and edit it:'
         echo '  cp .env.default .env'
@@ -12,6 +13,13 @@ if [ ! -f $HERE/.env ]; then
         exit 1
 fi
 source $HERE/.env
+if [ "$CUSTOM_CONFIG" = 'NO' ];
+then
+        echo 'ERROR: .env file was created, but apparently not edited.'
+        echo 'If you believe this message is a mistake, please check the beginning of .env'
+        echo
+        exit 1
+fi
 
 if [ "$FORCE" = '1' ];
 then
@@ -43,16 +51,16 @@ cp ./test-www/index.html $TEST_DIR
 cp ./test-www/php.php $TEST_DIR
 cp ./test-www/db.php $TEST_DIR
 
-echo ''
+echo
 echo 'The Docker containers and a Docker network are up.'
 echo 'You can find some tests to run under /test-www/index.html'
 echo 'You may need a couple of minutes before running them.'
 echo ''
 echo 'To shutdown the containers:'
 echo '  docker-compose down'
-echo ''
+echo
 echo 'To recreate the containers and copy the files again:'
 echo '  FORCE=1 ./up'
-echo ''
+echo
 
 
