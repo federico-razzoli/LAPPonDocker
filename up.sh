@@ -33,8 +33,15 @@ fi
 
 # get the latest version of PHP Dockerfile
 # that will be built by Docker Compose
-rm -f docker-php/Dockerfile
-wget https://raw.githubusercontent.com/federico-razzoli/php-pdo-pgsql/master/Dockerfile -P $HERE/docker-php
+if [ "$FORCE_UPGRADE_PHP" = 1 ];
+then
+        echo 'FORCE_UPGRADE_PHP was specified. Deleting PHP dockerfile to upgrade it'
+        rm -f docker-php/Dockerfile
+fi
+if [ ! -f $HERE/docker-php/Dockerfile ];
+then
+        wget https://raw.githubusercontent.com/federico-razzoli/php-pdo-pgsql/master/Dockerfile -P $HERE/docker-php
+fi
 
 docker-compose up -d
 
