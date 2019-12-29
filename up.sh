@@ -8,6 +8,7 @@ if [ ! -f $HERE/.env ]; then
         echo 'Before continuing, create it from .env.default and edit it:'
         echo '  cp .env.default .env'
         echo '  vi .env'
+        echo
         exit 1
 fi
 source $HERE/.env
