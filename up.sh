@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Get the latest version of PHP image.
+# Bring the containers up with Docker Compose and do some additional arrengements
+# to make them more reliable and easy to use.
+
+
 # attempt to make the script collable from anywhere,
 # but then Docker Compose will not work...
 HERE=$( cd $(dirname "$0") ; pwd -P )
