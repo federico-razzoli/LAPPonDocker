@@ -1,0 +1,7 @@
+# ignore this dir, as it contains file from another project
+docker-php/*
+
+# whitelist .keep wherever it is
+!**/.keep
+
+

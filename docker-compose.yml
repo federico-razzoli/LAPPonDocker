@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+
+  # Apache + PHP with PostgreSQL PDO driver
+  # TODO: healthcheck
+  www:
+    build:
+      context: ./docker-php
+    volumes:
+      #- ${AP_CONF_FILE}:/etc/apache2
+      - ${AP_PATH}:/var/www/html
+      #- ${PH_CONF_PATH}:/usr/local/etc/php/conf.d/
+    ports:
+      - "80:80"
+    # No real dependency. But the database takes more time to be ready,
+    # so let's start it first.
+    depends_on:
+      - db
+    links:
+      - db
+
+  # TODO: healthcheck
+  db:
+    image: "postgres:${DB_VERSION}-alpine"
+    volumes:
+      - ${DB_DATADIR}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+
+
