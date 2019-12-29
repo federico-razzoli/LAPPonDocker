@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Create .pgpass and an alias in .bashrc, so root can connect to PostgreSQL
+# by just typing "pg".
+
 
 # Validate input
 if [ -z "$DB_NAME" ] || [ -z "$DB_USER" ] || [ -z "$DB_PASSWORD" ];
@@ -12,8 +15,6 @@ then
 fi
 
 
-# Create .pgpass and an alias in .bashrc, so root can connect to PostgreSQL
-# by just typing "pg".
 docker exec -ti apachephppostgresql_db_1 sh -c "echo '#hostname:port:database:username:password'       > /root/.pgpass"
 docker exec -ti apachephppostgresql_db_1 sh -c "echo 'localhost:5432:$DB_NAME:$DB_USER:$DB_PASSWORD'  >> /root/.pgpass"
 docker exec -ti apachephppostgresql_db_1 sh -c "chmod 0600 /root/.pgpass"
