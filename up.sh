@@ -28,6 +28,7 @@ fi
 
 # get the latest version of PHP Dockerfile
 # that will be built by Docker Compose
+rm -f docker-php/Dockerfile
 wget https://raw.githubusercontent.com/federico-razzoli/php-pdo-pgsql/master/Dockerfile -P $HERE/docker-php
 
 docker-compose up -d
