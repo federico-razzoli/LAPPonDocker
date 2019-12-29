@@ -52,6 +52,15 @@ FORCE=1 ./up.sh
 Once the containers are up and running, any standard Docker Compose command
 will work.
 
+### PostgreSQL container
+
+The PostgreSQL container contains proper `.pgpass` file and `pg` alias, so root
+can connect to PostgreSQL by simply typing:
+
+```
+pg
+```
+
 ## License
 
 Copyright 2019, Federico Razzoli
