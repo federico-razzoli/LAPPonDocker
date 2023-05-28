@@ -31,11 +31,7 @@ if (!extension_loaded('pdo')) {
     fail('PDO extension is not installed');
 }
 
-#if (!extension_loaded('pdo_pgsql')) {
-#    fail('PDO PostgreSQL driver is not installed');
-#}
-
-echo 'PDO extension and PostgreSQL driver are installed' . NL;
+echo 'PDO extension is installed' . NL;
 
 try {
     $dbh = new PDO(PG_DSN);
